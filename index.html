@@ -4,22 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>SciFi Movie</title>
     
     <link rel="stylesheet" href="./assets/css/style.css">
-
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    
 
 
 </head>
 <body onLoad="randomWordGenerator ()">
 
-    <!-- <button onclick="randomWordGenerator ()">Click Here!</button><br> -->
-    Wins: <span id="win"></span><br>
-    Losses: <span id="lose"></span><br>
-    Lives: <span id="live"></span><br>
-    <!-- The Word is: <span id="word"></span><br> -->
-    The Word should Display: <span id="secretWord"></span><br>
-    Letters Guessed: <span id="lettersGuessed"></span>
+    <div id="background">
+    </div>
+
+    <div class="content">
+        <div class="wrapper">
+            <div class="image">
+                <img id="computer" src="./assets/images/Schneider_Amstrad_PC_1512_DD_Transparent_BG.png" alt="">
+                <div class="text">
+                    <h1>SciFi Movie Guessing Game</h1>
+                    <br>
+                    Wins: <span id="win"></span><br>
+                    <br>
+                    Losses: <span id="lose"></span><br>
+                    <br>
+                    Lives: <span id="live"></span><br>
+                    <br>
+                    The Name of Movie: <span id="secretWord"></span><br>
+                    <br>
+                    Letters Guessed: <span id="lettersGuessed"></span><br>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div id="themeSong">
+        
+    </div>
+    
 
     <script src="./assets/javascript/game.js"></script>
 </body>

@@ -1,11 +1,6 @@
 // Global Var
-var wordLibrary = ["ACURA", "AUDI", "BENTLEY", "BMW", "BUGATTI", "BUICK", 
-"CADILLAC", "CHEVROLET", "CHRYSLER", "CITROEN", "DODGE", "FERRARI", "FIAT", 
-"FORD", "GENESIS", "GMC", "HONDA", "HYUNDAI", "INFINITI", "JAGUAR", "JEEP", 
-"KIA", "KOENIGSEGG", "LAMBORGHINI", "LEXUS", "LINCOLN", "LOTUS", "MASERATI", 
-"MAZDA", "MCLAREN", "MERCEDES", "MINI", "MITSUBISHI", "NISSAN", "PAGANI", 
-"PEUGEOT", "PORSCHE", "RENAULT", "SUBARU", "TESLA", "TOYOTA", "VOLKSWAGEN", 
-"VOLVO"];
+var wordLibrary = ["alien", "backtothefuture", "inception", "interstellar",
+ "jurassicpark", "matrix", "starwars", "themartian"];
 
 var randomWord = "";
 var letters = [];
@@ -16,6 +11,8 @@ var lives = 10;
 var wins = 0;
 var losses = 0;
 var numberOfLetters = 0;
+
+var wrongLettersLength = 0;
 
 
 
@@ -76,55 +73,108 @@ function checkLetter (letter) {
       }
     } 
     else { 
-          console.log ("wrong Letter:", letter);
+
+      /*--------------------------------- Wrong Letters: check for double ---------------------------------*/
+      /*
+      console.log (letter);
+      if (wrongLettersLength == 0) {
+        wrongLetters.push(letter);
+        document.getElementById("lettersGuessed").innerText = wrongLetters;
+        //console.log ("1 @ number of wrong letters:", wrongLetters.length);
+        //console.log ("when i = 0", wrongLetters);
+        wrongLettersLength = wrongLetters.length;
+      } 
+
+      else {
+
+        var wrongLetterInArray = false;
+
+        for (var x = 0; x < wrongLetters.length; x++) {
+
+        //console.log ("2 @ number of wrong letters:", wrongLetters.length);  
+
+          if (letter == wrongLetters[x]) {
+            wrongLetterInArray = true;
+          } 
+          
+          console.log (wrongLetterInArray);
+
+          if (wrongLetterInArray) {
+            
+              if (letter == wrongLetters[x]) {
+                return;
+              } 
+              
+              
+              
+
+            
+            
+          }
           wrongLetters.push(letter);
           document.getElementById("lettersGuessed").innerText = wrongLetters;
           lives--;
           document.getElementById("live").innerHTML = lives;
+
+
+
+        }
+     } 
+
+      
+      */
+
+      /*--------------------------------- Wrong Letter: Does not check for double ---------------------------------*/
+      
+      
+      console.log ("wrong Letter:", letter);
+      wrongLetters.push(letter);
+      document.getElementById("lettersGuessed").innerText = wrongLetters;
+      lives--;
+      document.getElementById("live").innerHTML = lives
+      
+      
     }
-// Still need to write Letters Guesssed Check for double.
-
-
-
-
-
-
-//---------------------------------------------------------
 
 /* winning condition*/
   if (randomWord == output.join("")) {
     console.log (randomWord);
     console.log (output.join(""));
-    alert ("CONGRAT!!!, you win");
+    document.getElementById("secretWord").innerText = randomWord;
+    console.log (output)
+    var carName = randomWord;
+    //alert ("CONGRAT!!!, You Win. The Word is: " + carName);
+
     wins++;
-    reset ();
+
+    var queMusic = randomWord;
+    playMusic (queMusic);
   } else { console.log ("word not match yet")};
 
   if (lives == 0) {
-    alert ("Too Bad!!!, you lose");
+    var carName = randomWord;
+    alert ("Too Bad!!!, You Lose. The Word is: " + carName);
     losses++;
     reset ();
-  }
-
-
-            
+  }            
 }
     
 function reset () {
-
-output = [];
-wrongLetters = [];
-document.getElementById("lettersGuessed").innerText = wrongLetters;
-
-randomWordGenerator ();
-
+  output = [];
+  wrongLetters = [];
+  document.getElementById("lettersGuessed").innerText = wrongLetters;
+  randomWordGenerator ();
 }
-
 
 /* Key Input */
 document.onkeypress = function(event) {
+  var keyInput = event.key;
+  console.log ("Key pressed:", keyInput);
+  checkLetter (keyInput);
+}
 
-    var keyInput = event.key;
-    console.log ("Key pressed:", keyInput);
-    checkLetter (keyInput);
+function playMusic(queMusic){
+  document.getElementById("themeSong").innerHTML = "<audio controls autoplay src='./assets/audio/" + queMusic + ".mp3' type='audio/mp3'></audio>;" 
+  document.getElementById("background").innerHTML = "<img src='./assets/images/" + queMusic + ".gif'>"
+  reset ();
 }

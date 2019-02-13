@@ -1,0 +1,35 @@
+body {
+    background-color: black;
+}
+.content {
+    width: 100%;
+    position: absolute;
+    top:0px;
+}
+.wrapper {
+    width: 1000px;
+    margin: auto;
+}
+.header {
+    text-align: center;
+}
+#computer {
+    width: 1000px;
+    height: auto;
+}
+.text {
+    font-family: 'VT323', monospace;
+    color: rgb(18, 172, 18);
+    font-size: 25px;
+    position: relative;
+    left: 230px;
+    top: -950px;
+}
+#background {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    width: 600px;
+    height: auto;
+}
